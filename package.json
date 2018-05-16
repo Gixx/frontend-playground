@@ -1,0 +1,58 @@
+{
+  "name": "@Gixx/thomas-components",
+  "version": "0.0.1",
+  "description": "Simple and lightweight web components",
+  "keywords": [],
+  "author": "Gabor Ivan <gixx@gixx-web.com> (http://www.gixx-web.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/Gixx/frontend-playground#readme",
+  "bugs": {
+    "url": "https://github.com/Gixx/frontend-playground/issues"
+  },
+  "scripts": {
+    "build": "webpack",
+    "lint-js": "eslint . --ext .js --ext .jsx",
+    "lint-css": "stylelint './src/**/*.scss' --syntax scss",
+    "start": "webpack && open ./public/index.html",
+    "demo": "open ./public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gixx/frontend-playground.git"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-preact": "^1.1.6",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-standard": "^3.1.0",
+    "esprima": "^4.0.0",
+    "esprima-fb": "^15001.1001.0-dev-harmony-fb",
+    "extract-loader": "^2.0.1",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "preact-cli": "^2.2.1",
+    "sass-google-fonts": "^1.0.1",
+    "sass-loader": "^7.0.1",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-webpack-plugin": "^0.10.4",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "preact": "^8.2.9",
+    "preact-compat": "^3.18.0"
+  }
+}
