@@ -10,10 +10,10 @@
     "url": "https://github.com/Gixx/frontend-playground/issues"
   },
   "scripts": {
-    "build": "webpack",
-    "lint-js": "eslint './src/**/*.js' --ext .js",
-    "lint-css": "stylelint './src/**/*.scss' --syntax scss",
-    "start": "webpack && open ./public/index.html",
+    "build": "./node_modules/.bin/webpack",
+    "lint-js": "./node_modules/.bin/eslint './src/**/*.js' --ext .js",
+    "lint-css": "./node_modules/.bin/stylelint './src/**/*.scss' --syntax scss",
+    "start": "./node_modules/.bin/webpack && open ./public/index.html",
     "demo": "open ./public/index.html"
   },
   "repository": {
@@ -29,9 +29,9 @@
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-preact": "^1.1.6",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-standard": "^3.1.0",
     "esprima": "^4.0.0",
@@ -43,12 +43,12 @@
     "preact-cli": "^2.2.1",
     "sass-google-fonts": "^1.0.1",
     "sass-loader": "^7.0.1",
-    "stylelint": "^9.2.0",
+    "stylelint": "^9.2.1",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-webpack-plugin": "^0.10.4",
+    "stylelint-webpack-plugin": "^0.10.5",
     "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack": "^4.8.1",
-    "webpack-cli": "^2.1.3",
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
