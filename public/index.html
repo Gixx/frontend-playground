@@ -15,14 +15,17 @@
                 <h1>Test</h1>
                 <article>
                     <form>
-                        <input type="hidden" name="data" value="dlkfjd;fkjhfd">
-                        <div data-component="TextInput" data-label="Username" data-name="username" data-values="[]">
-                            <label>Username:</label><input type="text" name="username" value="">
-                        </div>
+                        <input type="hidden" name="data" value="hidden data">
+                        <component type="text-input" label="Username" name="username" value="">
+                            <label for="username">Username:</label><input type="text" id="username" name="username" value="">
+                        </component>
+                        <component type="text-input" label="Nickname" name="nickname" value="">
+                            <label for="nickname">Nickname:</label><input type="text" id="nickname" name="nickname" value="">
+                        </component>
                         <div>
                             <label>Password:</label><input type="password" name="password" value="">
                         </div>
-                        <div data-component="SubmitButton" data-label="Save" data-name="save" data-values="[]">
+                        <div>
                             <input type="submit" value="Save">
                         </div>
                     </form>

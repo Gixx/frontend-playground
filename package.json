@@ -38,9 +38,13 @@
     "esprima-fb": "^15001.1001.0-dev-harmony-fb",
     "extract-loader": "^2.0.1",
     "file-loader": "^1.1.11",
+    "jszip": "^3.1.5",
+    "jszip-utils": "^0.0.2",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
+    "preact": "^8.2.9",
     "preact-cli": "^2.2.1",
+    "preact-compat": "^3.18.0",
     "sass-google-fonts": "^1.0.1",
     "sass-loader": "^7.0.1",
     "stylelint": "^9.2.1",
@@ -50,9 +54,5 @@
     "webpack": "^4.10.1",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
-  },
-  "dependencies": {
-    "preact": "^8.2.9",
-    "preact-compat": "^3.18.0"
   }
 }

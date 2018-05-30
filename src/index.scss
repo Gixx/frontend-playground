@@ -8,5 +8,9 @@
  */
 
 @import './components/common';
-@import './components/submit-button/submit-button';
-@import './components/text-input/text-input';
+//@import './components/submit-button/submit-button';
+//@import './components/text-input/text-input';
+
+component {
+  display: block;
+}
