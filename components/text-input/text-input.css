@@ -5,3 +5,11 @@
     outline: 1px dashed red;
     padding: 5px;
 }
+
+.component.text-input.green {
+    outline-color: green;
+}
+
+.component.text-input.line {
+    outline-style: solid;
+}

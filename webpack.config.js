@@ -1,10 +1,11 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     entry: ['./src/index.js', './src/index.scss'],
     output: {
-        path: __dirname + '/public/dist/',
+        path: path.join(__dirname, '/public/dist/'),
         filename: 'app.min.js'
     },
     mode: 'production',
@@ -12,7 +13,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                include: __dirname + '/src/',
+                include: path.join(__dirname, '/src/'),
                 exclude: /(node_modules|public)/,
                 use: [
                     {
@@ -28,12 +29,12 @@ module.exports = {
                     },
                     {
                         loader: 'eslint-loader'
-                    },
-                ],
+                    }
+                ]
             },
             {
                 test: /\.scss$/,
-                include: __dirname + '/src/',
+                include: path.join(__dirname, '/src/'),
                 exclude: /(node_modules|public)/,
                 use: [
                     {
@@ -48,22 +49,22 @@ module.exports = {
                     {
                         loader: 'sass-loader',
                         options: {
-                            includePaths: [__dirname + '/src'],
+                            includePaths: [path.join(__dirname, '/src')],
                             outputStyle: 'compressed',
                         }
-                    },
+                    }
                 ]
             }
         ]
     },
     plugins: [
-        new UglifyJsPlugin(),
-        new StyleLintPlugin(),
+        // new UglifyJsPlugin(),
+        new StyleLintPlugin()
     ],
     resolve: {
         alias: {
-            "react": "preact-compat",
-            "react-dom": "preact-compat"
+            'react': 'preact-compat',
+            'react-dom': 'preact-compat'
         }
     }
 };

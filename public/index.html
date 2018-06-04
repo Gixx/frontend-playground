@@ -14,16 +14,19 @@
             <section>
                 <h1>Test</h1>
                 <article>
-                    <form>
+                    <form autocomplete="off">
                         <input type="hidden" name="data" value="hidden data">
-                        <component type="text-input" label="Username" name="username" value="">
-                            <label for="username">Username:</label><input type="text" id="username" name="username" value="">
+                        <component type="text-input" label="Username" name="username" value="" classList="green">
+                            <label for="username">Username:</label><input type="text" id="username" name="username" value="" autocomplete="off">
                         </component>
-                        <component type="text-input" label="Nickname" name="nickname" value="">
-                            <label for="nickname">Nickname:</label><input type="text" id="nickname" name="nickname" value="">
+                        <component type="text-input" label="Nickname" name="nickname" value="" classList="line, bluebackground" customAttributes='{"index":8, "userId":329487}'>
+                            <label for="nickname">Nickname:</label><input type="text" id="nickname" name="nickname" value="" autocomplete="off">
+                        </component>
+                        <component type="text-field" label="Email" name="email" value="">
+                            <label for="nickname">Email:</label><input type="email" id="email" name="email" value="" autocomplete="off">
                         </component>
                         <div>
-                            <label>Password:</label><input type="password" name="password" value="">
+                            <label>Password:</label><input type="text" name="password" autocomplete="off" value="" autocomplete="off">
                         </div>
                         <div>
                             <input type="submit" value="Save">

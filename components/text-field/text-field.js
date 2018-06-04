@@ -1,13 +1,13 @@
 'use strict';
 
 /**
- * TextInput Component
+ * TextField Component
  *
  * @type {{init}}
  */
-const TextInputComponent = function (options) {
+const TextFieldComponent = function (options) {
     /** @type {NodeList} */
-    let textInputComponentElements;
+    let textFieldComponentElements;
     /** @type {number} */
     let idCounter = 1;
     /** @type {boolean} */
@@ -24,16 +24,16 @@ const TextInputComponent = function (options) {
         }
     }
 
-    let TextInputElement = function (HTMLElement) {
+    let TextFieldElement = function (HTMLElement) {
         options.verbose && console.info(
-            '%c✚%c a TextInput Component Element is initialized %o',
+            '%c✚%c a TextField Component Element is initialized %o',
             'color:green; font-weight:bold;',
             'color:black;',
             '#' + HTMLElement.getAttribute('id')
         );
 
         return {
-            constructor: TextInputElement
+            constructor: TextFieldElement
         };
     };
 
@@ -42,7 +42,7 @@ const TextInputComponent = function (options) {
     }
 
     options.verbose && console.info(
-        '%c✔%c the TextInput Component is loaded.',
+        '%c✔%c the TextField Component is loaded.',
         'color:green; font-weight:bold;',
         'color:black; font-weight:bold;'
     );
@@ -53,27 +53,27 @@ const TextInputComponent = function (options) {
                 return;
             }
 
-            options.verbose && console.group(
-                '%c  looking for TextInput Component Elements...',
+            console.group(
+                '%c  looking for TextField Component Elements...',
                 'color:#cecece'
             );
 
-            textInputComponentElements = document.querySelectorAll('.component.text-input');
+            textFieldComponentElements = document.querySelectorAll('.component.text-field');
 
-            for (let i = 0, len = textInputComponentElements.length; i < len; i++) {
-                if (!textInputComponentElements[i].hasAttribute('id')) {
-                    textInputComponentElements[i].setAttribute('id', 'textInputComponentElement-' + (idCounter++));
+            for (let i = 0, len = textFieldComponentElements.length; i < len; i++) {
+                if (!textFieldComponentElements[i].hasAttribute('id')) {
+                    textFieldComponentElements[i].setAttribute('id', 'textFieldComponentElement-' + (idCounter++));
                 }
 
-                textInputComponentElements[i].component = new TextInputElement(textInputComponentElements[i]);
+                textFieldComponentElements[i].component = new TextFieldElement(textFieldComponentElements[i]);
             }
 
             console.groupEnd();
 
-            window.Util.triggerEvent(document, 'TextInputComponentLoaded');
+            window.Util.triggerEvent(document, 'TextFieldComponentLoaded');
             initialized = true;
         }
     };
 };
 
-window['TextInputComponent'] = TextInputComponent;
+window['TextFieldComponent'] = TextFieldComponent;
