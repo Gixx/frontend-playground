@@ -267,23 +267,6 @@ const ComponentLoader = function (options) {
             lookForComponentElements();
             downloadComponents();
             initialized = true;
-            options.verbose && console.info();
-        },
-
-        /**
-         * Informs about component load error.
-         *
-         * @param {string} componentName
-         * @param {ReferenceError} error
-         */
-        loadError: function (componentName, error) {
-            let errorMsg = error.toString().split('\n')[0];
-            options.verbose && console.info(
-                '%c✖%c the ' + componentName + ' component cannot be loaded: %c' + errorMsg,
-                'color:red',
-                'color:black',
-                'text-decoration:underline;font-style:italic'
-            );
         }
     };
 };
