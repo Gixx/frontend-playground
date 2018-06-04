@@ -26,3 +26,5 @@ $> npm run build
 
 To see the results you need to set up a webserver since loading files with 
 Ajax is not allowed with the file:// protocol
+
+![alt text](./readme.png "Output")
