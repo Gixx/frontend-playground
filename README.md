@@ -8,7 +8,7 @@ get with this.
 
 ## Installation
 
-Simply run:
+First clone the repository to your project folder, then simply run:
 
 ```bash
 $> npm install
@@ -24,8 +24,5 @@ $> npm run build
 
 ## See results
 
-To see the results after the build was successful, just execute:
-
-```bash
-$> npm run demo
-```
+To see the results you need to set up a webserver since loading files with 
+Ajax is not allowed with the file:// protocol
