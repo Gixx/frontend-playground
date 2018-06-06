@@ -1,8 +1,8 @@
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+const AppConfig = {
     entry: ['./src/index.js', './src/index.scss'],
     output: {
         path: path.join(__dirname, '/public/dist/'),
@@ -14,7 +14,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: path.join(__dirname, '/src/'),
-                exclude: /(node_modules|public)/,
+                exclude: /(node_modules|public|src\/components)/,
                 use: [
                     {
                         loader: 'babel-loader',
@@ -35,7 +35,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 include: path.join(__dirname, '/src/'),
-                exclude: /(node_modules|public)/,
+                exclude: /(node_modules|public|src\/components)/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -58,7 +58,7 @@ module.exports = {
         ]
     },
     plugins: [
-        // new UglifyJsPlugin(),
+        new UglifyJsPlugin(),
         new StyleLintPlugin()
     ],
     resolve: {
@@ -68,3 +68,9 @@ module.exports = {
         }
     }
 };
+
+const configs = [AppConfig];
+
+// TODO generate webpack config for the components
+
+module.exports = configs;

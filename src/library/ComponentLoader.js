@@ -1,6 +1,10 @@
+/*!
+ * Component Loader Framework
+ * @author   Gabor Ivan <gixx@gixx-web.com>
+ * @license  MIT
+ */
 'use strict';
 
-// const Util = require('./Util');
 const JSZip = require('jszip');
 const JSZipUtils = require('jszip-utils');
 

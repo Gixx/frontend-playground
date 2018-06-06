@@ -1,0 +1,7 @@
+.component.text-field {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    outline: 1px dashed red;
+    padding: 5px;
+}
