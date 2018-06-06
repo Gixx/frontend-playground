@@ -41,7 +41,7 @@ const ComponentLoader = function (options) {
             'color:black'
         );
 
-        let componentElements = document.getElementsByTagName('component');
+        let componentElements = document.getElementsByTagName('x-component');
         let uniqueComponents = 0;
 
         for (let i in componentElements) {
@@ -176,7 +176,7 @@ const ComponentLoader = function (options) {
      * @param {String} genericContent
      */
     const applyMarkup = function (selector, genericContent) {
-        let componentElements = document.querySelectorAll('component[type=' + selector + ']');
+        let componentElements = document.querySelectorAll('x-component[type=' + selector + ']');
         componentElements.forEach(function (element) {
             let classList = element.hasAttribute('classList')
                 ? element.getAttribute('classList').replace(/,/g, ' ')
@@ -267,6 +267,9 @@ const ComponentLoader = function (options) {
             if (initialized) {
                 return;
             }
+
+            // first, register the new custom tag
+            document.registerElement('x-component');
 
             lookForComponentElements();
             downloadComponents();
