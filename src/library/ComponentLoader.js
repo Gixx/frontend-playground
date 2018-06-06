@@ -125,21 +125,21 @@ const ComponentLoader = function (options) {
                     }
 
                     JSZip.loadAsync(data).then(function (zip) {
-                        zip.file(componentData[typeName].pathName + '/' + componentData[typeName].pathName + '.html')
+                        zip.file(componentData[typeName].pathName + '/index.html')
                             .async('text')
                             .then(function (txt) {
                                 componentData[typeName].html = txt;
                                 window.Util.triggerEvent(document, eventName);
                             });
 
-                        zip.file(componentData[typeName].pathName + '/' + componentData[typeName].pathName + '.js')
+                        zip.file(componentData[typeName].pathName + '/index.js')
                             .async('text')
                             .then(function (txt) {
                                 componentData[typeName].js = txt;
                                 window.Util.triggerEvent(document, eventName);
                             });
 
-                        zip.file(componentData[typeName].pathName + '/' + componentData[typeName].pathName + '.css')
+                        zip.file(componentData[typeName].pathName + '/index.css')
                             .async('text')
                             .then(function (txt) {
                                 componentData[typeName].css = txt;
