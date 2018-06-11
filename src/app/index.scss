@@ -7,13 +7,13 @@
  * @link      http://www.gixx-web.com
  */
 
-@import './library/common';
+@import '../library/common';
 
 x-component {
-  display: block;
+    display: block;
 }
 
 .bluebackground {
-  margin: 10px;
-  background-color: aquamarine;
+    margin: 10px;
+    background-color: aquamarine;
 }

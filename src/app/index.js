@@ -1,7 +1,7 @@
 import './index.scss';
 
-const Util = require('./library/Util');
-const ComponentLoader = require('./library/ComponentLoader');
+const Util = require('../library/Util');
+const ComponentLoader = require('../library/ComponentLoader');
 
 // Register Global Object
 window['Util'] = Util;

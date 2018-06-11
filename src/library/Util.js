@@ -90,207 +90,207 @@ const Util = {
         }
 
         return false;
-    }
-};
+    },
 
-/**
- * Clones an object
- *
- * @param {object} obj The object to clone
- * @return {object} The cloned object
- */
-Util.clone = function (obj) {
-    let copy;
+    /**
+     * Clones an object
+     *
+     * @param {object} obj The object to clone
+     * @return {object} The cloned object
+     */
+    clone: function (obj) {
+        let copy;
 
-    // Handle the 3 simple types, and null or undefined
-    if (obj === null || typeof obj !== 'object') return obj;
+        // Handle the 3 simple types, and null or undefined
+        if (obj === null || typeof obj !== 'object') return obj;
 
-    // Handle Date
-    if (obj instanceof Date) {
-        copy = new Date();
-        copy.setTime(obj.getTime());
-        return copy;
-    }
-
-    // Handle Array
-    if (obj instanceof Array) {
-        copy = [];
-        for (let i = 0, len = obj.length; i < len; i++) {
-            copy[i] = this.clone(obj[i]);
+        // Handle Date
+        if (obj instanceof Date) {
+            copy = new Date();
+            copy.setTime(obj.getTime());
+            return copy;
         }
-        return copy;
-    }
 
-    // Handle Object
-    if (obj instanceof Object) {
-        copy = {};
-        for (let attr in obj) {
-            if (obj.hasOwnProperty(attr)) copy[attr] = this.clone(obj[attr]);
+        // Handle Array
+        if (obj instanceof Array) {
+            copy = [];
+            for (let i = 0, len = obj.length; i < len; i++) {
+                copy[i] = this.clone(obj[i]);
+            }
+            return copy;
         }
-        return copy;
-    }
 
-    console.error('Unable to copy obj! Its type isn\'t supported.');
-};
+        // Handle Object
+        if (obj instanceof Object) {
+            copy = {};
+            for (let attr in obj) {
+                if (obj.hasOwnProperty(attr)) copy[attr] = this.clone(obj[attr]);
+            }
+            return copy;
+        }
 
-/**
- * Makes an XmlHttpRequest.
- *
- * @param {*} settings
- * @return {XMLHttpRequest}
- * @example  {
- *   url: '/index',
- *   method: 'POST',
- *   data: {
- *     name: 'John Doe',
- *     email: 'johndoe@foo.org'
- *   },
- *   async: true,
- *   success: function(data) { alert('Done'); },
- *   failure: function(data) { alert('Failed'); }
- * }
- */
-Util.ajax = function (settings) {
-    let rnd = new Date().getTime();
-    let url = typeof settings.url !== 'undefined' ? settings.url : '/';
-    let method = typeof settings.method !== 'undefined' ? settings.method : 'POST';
-    let async = typeof settings.async !== 'undefined' ? settings.async : true;
-    let data = typeof settings.data !== 'undefined' ? settings.data : '';
-    let successCallback = typeof settings.success === 'function' ? settings.success : function (data) {};
-    let failureCallback = typeof settings.failure === 'function' ? settings.failure : function (data) {};
-    let xhr = new XMLHttpRequest();
+        console.error('Unable to copy obj! Its type isn\'t supported.');
+    },
 
-    url = url + (url.lastIndexOf('?') === -1 ? '?' : '&') + 'timestamp=' + rnd;
+    /**
+     * Makes an XmlHttpRequest.
+     *
+     * @param {*} settings
+     * @return {XMLHttpRequest}
+     * @example  {
+     *   url: '/index',
+     *   method: 'POST',
+     *   data: {
+     *     name: 'John Doe',
+     *     email: 'johndoe@foo.org'
+     *   },
+     *   async: true,
+     *   success: function(data) { alert('Done'); },
+     *   failure: function(data) { alert('Failed'); }
+     * }
+     */
+    ajax: function (settings) {
+        let rnd = new Date().getTime();
+        let url = typeof settings.url !== 'undefined' ? settings.url : '/';
+        let method = typeof settings.method !== 'undefined' ? settings.method : 'POST';
+        let async = typeof settings.async !== 'undefined' ? settings.async : true;
+        let data = typeof settings.data !== 'undefined' ? settings.data : '';
+        let successCallback = typeof settings.success === 'function' ? settings.success : function (data) {};
+        let failureCallback = typeof settings.failure === 'function' ? settings.failure : function (data) {};
+        let xhr = new XMLHttpRequest();
 
-    xhr.open(method, url, async);
+        url = url + (url.lastIndexOf('?') === -1 ? '?' : '&') + 'timestamp=' + rnd;
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            try {
-                if (xhr.status === 200) {
-                    successCallback(xhr.responseText);
-                } else {
-                    failureCallback(xhr.responseText);
+        xhr.open(method, url, async);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                try {
+                    if (xhr.status === 200) {
+                        successCallback(xhr.responseText);
+                    } else {
+                        failureCallback(xhr.responseText);
+                    }
+                } catch (exp) {
+                    console.warn('JSON parse error. Continue', exp);
                 }
-            } catch (exp) {
-                console.warn('JSON parse error. Continue', exp);
             }
-        }
-    };
+        };
 
-    if (!(data instanceof FormData)) {
-        if (typeof data === 'object') {
-            data = JSON.stringify(data);
-            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        } else {
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        }
-    }
-
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.send(data);
-
-    return xhr;
-};
-
-/**
- * Adds event listeners to elements.
- *
- * @param {Array|NodeList}         elementList
- * @param {string}                 eventList
- * @param {EventListener|Function} callback
- * @param {*}                      [bindObject]
- */
-Util.addEventListeners = function (elementList, eventList, callback, bindObject) {
-    let events = eventList.split(' ');
-    if (typeof bindObject === 'undefined') {
-        bindObject = null;
-    }
-
-    if (typeof elementList.length === 'undefined') {
-        elementList = [elementList];
-    }
-
-    for (let i = 0, len = events.length; i < len; i++) {
-        for (let j = 0, els = elementList.length; j < els; j++) {
-            if (bindObject !== null) {
-                elementList[j].addEventListener(events[i], callback.bind(bindObject), true);
+        if (!(data instanceof FormData)) {
+            if (typeof data === 'object') {
+                data = JSON.stringify(data);
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
             } else {
-                elementList[j].addEventListener(events[i], callback, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
             }
         }
-    }
-};
 
-/**
- * Triggers an event on an element.
- *
- * @param {Node}   element
- * @param {string} eventName
- * @param {*}      [customData]
- */
-Util.triggerEvent = function (element, eventName, customData) {
-    let event;
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.send(data);
 
-    if (typeof customData !== 'undefined') {
-        event = new CustomEvent(eventName, {'detail': customData});
-    } else {
-        event = new Event(eventName);
-    }
+        return xhr;
+    },
 
-    element.dispatchEvent(event);
-};
-
-/**
- * Returns the event element path.
- *
- * @param {Event} event
- * @return {Array}
- */
-Util.getEventPath = function (event) {
-    let path = (event.composedPath && event.composedPath()) || event.path;
-    let target = event.target;
-
-    if (typeof path !== 'undefined') {
-        // Safari doesn't include Window, and it should.
-        path = (path.indexOf(window) < 0) ? path.concat([window]) : path;
-        return path;
-    }
-
-    if (target === window) {
-        return [window];
-    }
-
-    function getParents (node, memo) {
-        memo = memo || [];
-        let parentNode = node.parentNode;
-
-        if (!parentNode) {
-            return memo;
-        } else {
-            return getParents(parentNode, memo.concat([parentNode]));
+    /**
+     * Adds event listeners to elements.
+     *
+     * @param {Array|NodeList}         elementList
+     * @param {string}                 eventList
+     * @param {EventListener|Function} callback
+     * @param {*}                      [bindObject]
+     */
+    addEventListeners: function (elementList, eventList, callback, bindObject) {
+        let events = eventList.split(' ');
+        if (typeof bindObject === 'undefined') {
+            bindObject = null;
         }
-    }
 
-    return [target]
-        .concat(getParents(target))
-        .concat([window]);
-};
+        if (typeof elementList.length === 'undefined') {
+            elementList = [elementList];
+        }
 
-/**
- * Toggles browser fullscreen (experimental)
- */
-Util.toggleFullscreen = function () {
-    let doc = window.document;
-    let docEl = doc.documentElement;
+        for (let i = 0, len = events.length; i < len; i++) {
+            for (let j = 0, els = elementList.length; j < els; j++) {
+                if (bindObject !== null) {
+                    elementList[j].addEventListener(events[i], callback.bind(bindObject), true);
+                } else {
+                    elementList[j].addEventListener(events[i], callback, true);
+                }
+            }
+        }
+    },
 
-    let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-    let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+    /**
+     * Triggers an event on an element.
+     *
+     * @param {Node}   element
+     * @param {string} eventName
+     * @param {*}      [customData]
+     */
+    triggerEvent: function (element, eventName, customData) {
+        let event;
 
-    if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-        requestFullScreen.call(docEl);
-    } else {
-        cancelFullScreen.call(doc);
+        if (typeof customData !== 'undefined') {
+            event = new CustomEvent(eventName, {'detail': customData});
+        } else {
+            event = new Event(eventName);
+        }
+
+        element.dispatchEvent(event);
+    },
+
+    /**
+     * Returns the event element path.
+     *
+     * @param {Event} event
+     * @return {Array}
+     */
+    getEventPath: function (event) {
+        let path = (event.composedPath && event.composedPath()) || event.path;
+        let target = event.target;
+
+        if (typeof path !== 'undefined') {
+            // Safari doesn't include Window, and it should.
+            path = (path.indexOf(window) < 0) ? path.concat([window]) : path;
+            return path;
+        }
+
+        if (target === window) {
+            return [window];
+        }
+
+        function getParents (node, memo) {
+            memo = memo || [];
+            let parentNode = node.parentNode;
+
+            if (!parentNode) {
+                return memo;
+            } else {
+                return getParents(parentNode, memo.concat([parentNode]));
+            }
+        }
+
+        return [target]
+            .concat(getParents(target))
+            .concat([window]);
+    },
+
+    /**
+     * Toggles browser fullscreen (experimental)
+     */
+    toggleFullscreen: function () {
+        let doc = window.document;
+        let docEl = doc.documentElement;
+
+        let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            requestFullScreen.call(docEl);
+        } else {
+            cancelFullScreen.call(doc);
+        }
     }
 };
 

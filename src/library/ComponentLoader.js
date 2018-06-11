@@ -93,7 +93,7 @@ const ComponentLoader = function (options) {
         for (let i in componentData) {
             if (componentData.hasOwnProperty(i)) {
                 let typeName = i;
-                let src = './components/' + componentData[typeName].pathName + '.zip';
+                let src = './dist/components/' + componentData[typeName].pathName + '.zip';
                 let eventName = typeName + 'ComponentDownloaded';
 
                 document.addEventListener(eventName, function () {
@@ -125,21 +125,21 @@ const ComponentLoader = function (options) {
                     }
 
                     JSZip.loadAsync(data).then(function (zip) {
-                        zip.file(componentData[typeName].pathName + '/index.html')
+                        zip.file('index.html')
                             .async('text')
                             .then(function (txt) {
                                 componentData[typeName].html = txt;
                                 window.Util.triggerEvent(document, eventName);
                             });
 
-                        zip.file(componentData[typeName].pathName + '/index.js')
+                        zip.file('index.js')
                             .async('text')
                             .then(function (txt) {
                                 componentData[typeName].js = txt;
                                 window.Util.triggerEvent(document, eventName);
                             });
 
-                        zip.file(componentData[typeName].pathName + '/index.css')
+                        zip.file('index.css')
                             .async('text')
                             .then(function (txt) {
                                 componentData[typeName].css = txt;

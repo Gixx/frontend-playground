@@ -21,30 +21,23 @@
     "url": "git+https://github.com/Gixx/frontend-playground.git"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
+    "autoprefixer": "^8.6.2",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
-    "eslint-config-standard-preact": "^1.1.6",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-standard": "^3.1.0",
     "esprima": "^4.0.0",
     "esprima-fb": "^15001.1001.0-dev-harmony-fb",
     "extract-loader": "^2.0.1",
     "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
     "jszip": "^3.1.5",
     "jszip-utils": "^0.0.2",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
-    "preact": "^8.2.9",
-    "preact-cli": "^2.2.1",
-    "preact-compat": "^3.18.0",
     "sass-google-fonts": "^1.0.1",
     "sass-loader": "^7.0.1",
     "stylelint": "^9.2.1",
@@ -53,6 +46,7 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.10.1",
     "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "zip-webpack-plugin": "^3.0.0"
   }
 }

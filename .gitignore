@@ -1,4 +1,9 @@
+/build/*
+!/build/.gitkeep
 /node_modules
 /.idea
-/public/dist/*
+/public/dist/*.css
+/public/dist/*.js
 !/public/dist/.gitkeep
+/public/dist/components/*.zip
+!/public/dist/components/.gitkeep
