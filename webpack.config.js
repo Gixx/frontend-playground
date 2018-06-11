@@ -1,4 +1,3 @@
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
 const { readdirSync, statSync } = require('fs');
@@ -46,7 +45,6 @@ const AppConfig = {
         ]
     },
     plugins: [
-        // new UglifyJsPlugin(),
         new StyleLintPlugin()
     ]
 };
@@ -121,7 +119,6 @@ componentResources.forEach(function (directory, index) {
             ]
         },
         plugins: [
-            // new UglifyJsPlugin(),
             new StyleLintPlugin(),
             new ZipPlugin({
                 path: path.join(__dirname, '/public/dist/components'),
