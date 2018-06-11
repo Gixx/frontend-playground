@@ -14,15 +14,21 @@
             <section>
                 <h1>Test</h1>
                 <article>
-                    <form>
-                        <input type="hidden" name="data" value="dlkfjd;fkjhfd">
-                        <div data-component="TextInput" data-label="Username" data-name="username" data-values="[]">
-                            <label>Username:</label><input type="text" name="username" value="">
+                    <form autocomplete="off">
+                        <input type="hidden" name="data" value="hidden data">
+                        <x-component type="text-input" label="Username" name="username" value="" classList="green">
+                            <label for="username">Username:</label><input type="text" id="username" name="username" value="" autocomplete="foo">
+                        </x-component>
+                        <x-component type="text-input" label="Nickname" name="nickname" value="" classList="line, bluebackground" customAttributes='{"index":8, "userId":329487}'>
+                            <label for="nickname">Nickname:</label><input type="text" id="nickname" name="nickname" value="" autocomplete="foo">
+                        </x-component>
+                        <x-component type="text-field" label="Email" name="email" value="">
+                            <label for="nickname">Email:</label><input type="email" id="email" name="email" value="" autocomplete="foo">
+                        </x-component>
+                        <div>
+                            <label>Password:</label><input type="text" name="password" autocomplete="foo">
                         </div>
                         <div>
-                            <label>Password:</label><input type="password" name="password" value="">
-                        </div>
-                        <div data-component="SubmitButton" data-label="Save" data-name="save" data-values="[]">
                             <input type="submit" value="Save">
                         </div>
                     </form>

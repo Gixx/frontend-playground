@@ -1,34 +1,19 @@
 {
-  "parser": "babel-eslint",
+  "parser": "esprima",
   "env": {
     "browser": true,
     "node": true
   },
   "extends": [
-    "standard",
-    "standard-preact"
-  ],
-  "plugins": [
-    "react"
+    "standard"
   ],
   "rules": {
     "indent": ["warn", 4],
     "new-cap": 0,
     "strict": 0,
+    "semi": [2, "always"],
     "no-underscore-dangle": 0,
     "no-use-before-define": 0,
-    "eol-last": 0,
-    "jsx-quotes": [2, "prefer-double"],
-    "react/jsx-indent": ["warn", 4],
-    "react/jsx-boolean-value": 1,
-    "react/jsx-no-undef": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-multi-comp": 1,
-    "react/no-unknown-property": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/self-closing-comp": 1
+    "eol-last": 0
   }
 }

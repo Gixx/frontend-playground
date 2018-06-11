@@ -7,6 +7,13 @@
  * @link      http://www.gixx-web.com
  */
 
-@import './components/common';
-@import './components/submit-button/submit-button';
-@import './components/text-input/text-input';
+@import '../library/common';
+
+x-component {
+    display: block;
+}
+
+.bluebackground {
+    margin: 10px;
+    background-color: aquamarine;
+}

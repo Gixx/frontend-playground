@@ -1,0 +1,10 @@
+@import '../../library/mixins';
+@import '../../library/variables';
+
+.component.text-field {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    outline: 1px dashed $color-primary-background;
+    padding: 5px;
+}
