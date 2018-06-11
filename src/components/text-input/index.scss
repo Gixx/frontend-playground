@@ -1,3 +1,12 @@
+@import '../../library/mixins';
+@import '../../library/variables';
+
+/*!
+ * Text Input Component
+ * @author   Gabor Ivan <gixx@gixx-web.com>
+ * @license  MIT
+ */
+
 .component.text-input {
     position: relative;
     display: block;

@@ -1,6 +1,12 @@
 @import '../../library/mixins';
 @import '../../library/variables';
 
+/*!
+ * Text Field Component
+ * @author   Gabor Ivan <gixx@gixx-web.com>
+ * @license  MIT
+ */
+
 .component.text-field {
     position: relative;
     display: block;

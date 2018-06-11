@@ -251,6 +251,12 @@ const ComponentLoader = function (options) {
      * @param componentName
      */
     const initComponent = function (componentName) {
+        // Eval webpack data
+        if (typeof window.webpackJsonp[0][1][2] !== 'undefined') {
+            let webpackObject = window.webpackJsonp.shift();
+            webpackObject[1][2]();
+        }
+
         if (typeof window[componentName] !== 'undefined') {
             let component = new window[componentName](options);
             component.init();

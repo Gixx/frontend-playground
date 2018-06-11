@@ -1,4 +1,4 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
 const { readdirSync, statSync } = require('fs');
@@ -46,7 +46,7 @@ const AppConfig = {
         ]
     },
     plugins: [
-        new UglifyJsPlugin(),
+        // new UglifyJsPlugin(),
         new StyleLintPlugin()
     ]
 };
@@ -58,12 +58,19 @@ componentResources.forEach(function (directory, index) {
     let componentPath = path.join(__dirname, '/src/components', directory);
     let componentConfig = {
         context: componentPath,
-        entry: ['./index.js', './index.scss', './index.html'],
+        entry: {
+            index: './index.js',
+            style: './index.scss',
+            markup: './index.html'
+        },
         output: {
-            path: path.join(__dirname, '/build', directory),
-            filename: 'index.js'
+            path: path.join(__dirname, '/build', directory)
         },
         mode: 'production',
+        optimization: {
+            minimize: true,
+            runtimeChunk: true
+        },
         module: {
             rules: [
                 {
@@ -114,10 +121,11 @@ componentResources.forEach(function (directory, index) {
             ]
         },
         plugins: [
-            new UglifyJsPlugin(),
+            // new UglifyJsPlugin(),
             new StyleLintPlugin(),
             new ZipPlugin({
                 path: path.join(__dirname, '/public/dist/components'),
+                include: ['index.js', 'index.css', 'index.html'],
                 filename: directory + '.zip',
             })
         ]
