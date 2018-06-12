@@ -274,9 +274,6 @@ const ComponentLoader = function (options) {
                 return;
             }
 
-            // first, register the new custom tag
-            document.registerElement('x-component');
-
             lookForComponentElements();
             downloadComponents();
             initialized = true;
